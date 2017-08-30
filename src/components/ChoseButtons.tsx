@@ -9,7 +9,10 @@ const bugLabel = <span><u>B</u>ug</span>;
 const notLabel = <span><u>N</u>ot</span>;
 
 const ChoseButtons: React.SFC<ChoseButtonsProps> = ({id}) => (
-  <Button.Group>
+  <Button.Group
+    fluid
+    size="massive"
+  >
     <Button
       content={bugLabel}
       icon="bug"

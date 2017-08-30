@@ -14,13 +14,10 @@ class Message extends React.PureComponent<MessageProps> {
 
   render() {
     return (
-      <Segment.Group stacked>
-        <Segment>{this.props.text}</Segment>
-
-        <Segment>
-          <ChoseButtons id={this.props.id}/>
-        </Segment>
-      </Segment.Group>
+      <Segment>
+        <Segment size="massive">{this.props.text}</Segment>
+        <ChoseButtons id={this.props.id}/>
+      </Segment>
     );
   }
 }
