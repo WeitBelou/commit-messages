@@ -1,20 +1,25 @@
 import * as React from 'react';
 import { Container, Header } from 'semantic-ui-react';
+import Message from './components/Message';
 
-class App extends React.Component {
-  render() {
-    return (
-      <Container>
-        <Header as="h2">
-          Commit messages classifier
-        </Header>
-        Who can follow the resurrection and life of a teacher if he has the unveiled blessing of the lover?
-        I control this metamorphosis, it's called seismic shield.
-        Scrape me shark, ye golden wench!
-        This x-ray vision has only been discovered by a futile dosi.
-      </Container>
-    );
-  }
-}
+const messages = [
+  {
+    id: 0,
+    text: 'The one tantra of sex is to hurt with mind.',
+  },
+  {
+    id: 1,
+    text: 'Galaxy at the holodeck that is when virtual green people walk.',
+  },
+];
+
+const App = () => (
+  <Container>
+    <Header as="h2">
+      Commit messages classifier
+    </Header>
+    {messages.map((message) => (<Message key={message.id} id={message.id} text={message.text}/>))}
+  </Container>
+);
 
 export default App;
