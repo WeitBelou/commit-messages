@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, Header } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import Message from './components/Message';
 
 const messages = [
@@ -15,10 +15,7 @@ const messages = [
 
 const App = () => (
   <Container>
-    <Header as="h2">
-      Commit messages classifier
-    </Header>
-    {messages.map((message) => (<Message key={message.id} id={message.id} text={message.text}/>))}
+    <Message id={messages[1].id} text={messages[1].text}/>
   </Container>
 );
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
+import ChoseButtons from './ChoseButtons';
 
 interface MessageProps {
   id: number;
@@ -13,19 +14,13 @@ class Message extends React.PureComponent<MessageProps> {
 
   render() {
     return (
-      <div>
-        <Card>
-          <Card.Content>
-            {this.props.id}){this.props.text}
-          </Card.Content>
-          <Card.Content extra={true}>
-            <Button.Group>
-              <Button basic={true} color="green">OK</Button>
-              <Button basic={true} color="red">NOPE</Button>
-            </Button.Group>
-          </Card.Content>
-        </Card>
-      </div>
+      <Segment.Group stacked>
+        <Segment>{this.props.text}</Segment>
+
+        <Segment>
+          <ChoseButtons id={this.props.id}/>
+        </Segment>
+      </Segment.Group>
     );
   }
 }
