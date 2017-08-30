@@ -1,20 +1,18 @@
 import * as React from 'react';
-import './App.css';
-
-const logo = require('./logo.svg');
+import { Container, Header } from 'semantic-ui-react';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
+      <Container>
+        <Header as="h2">
+          Commit messages classifier
+        </Header>
+        Who can follow the resurrection and life of a teacher if he has the unveiled blessing of the lover?
+        I control this metamorphosis, it's called seismic shield.
+        Scrape me shark, ye golden wench!
+        This x-ray vision has only been discovered by a futile dosi.
+      </Container>
     );
   }
 }
