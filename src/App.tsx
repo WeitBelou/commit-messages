@@ -1,15 +1,13 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 
-import Voting from './components/Voting';
+import VotingContainer from './components/VotingContainer';
+import store from './redux/store';
 
 const App = () => (
-  <Voting
-    id={0}
-    text={'All hands harvest.'}
-
-    onBug={() => alert('On bug')}
-    onNotBug={() => alert('On not bug')}
-  />
+  <Provider store={store}>
+    <VotingContainer/>
+  </Provider>
 );
 
 export default App;

@@ -1,26 +1,38 @@
 import * as React from 'react';
 import { Container, Segment, Button } from 'semantic-ui-react';
 
-export interface VotingProps {
-  id: number;
-  text: string;
+import { Message, MessageId } from '../redux/state';
+import { isNullOrUndefined } from 'util';
 
-  onBug: () => void;
-  onNotBug: () => void;
+export interface VotingPropsValues {
+  message?: Message;
 }
 
-const Voting: React.SFC<VotingProps> = ({id, text, onBug, onNotBug}) => {
+export interface VotingPropsCallbacks {
+  onBug: (id: MessageId) => void;
+  onNotBug: (id: MessageId) => void;
+}
+
+export interface VotingProps extends VotingPropsValues, VotingPropsCallbacks {
+}
+
+const Voting: React.SFC<VotingProps> = ({message, onBug, onNotBug}) => {
+  const safeMessage = isNullOrUndefined(message) ? {id: -1, text: ''} : message;
+
+  const onBugHandler = () => onBug(safeMessage.id);
+  const onNotBugHandler = () => onNotBug(safeMessage.id);
+
   return (
     <Container>
       <Segment.Group size="massive">
-        <Segment>{text}</Segment>
+        <Segment>{safeMessage.text}</Segment>
 
         <Button.Group fluid size="massive">
-          <Button positive icon="bug" content="Bug" onClick={onBug}/>
+          <Button positive icon="bug" content="Bug" onClick={onBugHandler}/>
 
           <Button.Or/>
 
-          <Button content="Not" onClick={onNotBug}/>
+          <Button content="Not" onClick={onNotBugHandler}/>
         </Button.Group>
 
       </Segment.Group>

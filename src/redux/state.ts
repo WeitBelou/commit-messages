@@ -1,42 +1,49 @@
-import { Map } from 'immutable';
-
 export enum Votes {
-  BUG,
-  NOT_BUG,
+  BUG = 'BUG',
+  NOT_BUG = 'NOT_BUG',
+  NOT_VOTED = 'NOT_VOTED',
 }
 
 export type MessageId = number;
 
-export type Message = {
-  readonly id: MessageId
-  readonly text: string
-  readonly vote?: Votes
-};
+export interface Message {
+  readonly id: MessageId;
+  readonly text: string;
+  readonly vote: Votes;
+}
 
-export type Messages = {
-  readonly currentMessage?: Message
-  readonly all: Map<MessageId, Message>
-};
+export interface Messages {
+  readonly currentMessage?: Message;
+  readonly all: Message[];
+}
 
-export type State = {
-  readonly messages: Messages
-};
+export interface State {
+  readonly messages: Messages;
+}
 
 export const initialState: State = {
   messages: {
-    all: Map<MessageId, Message>({
-      0: {
+    currentMessage: {
+      id: 0,
+      text: 'I acquire this ionic cannon, it\'s called reliable flight.',
+      vote: Votes.NOT_VOTED,
+    },
+    all: [
+      {
         id: 0,
         text: 'I acquire this ionic cannon, it\'s called reliable flight.',
+        vote: Votes.NOT_VOTED,
       },
-      1: {
+      {
         id: 1,
         text: 'Engage, strange energy!',
+        vote: Votes.NOT_VOTED,
       },
-      2: {
+      {
         id: 2,
         text: 'All the ships deceive bare, spheroid cosmonauts.',
+        vote: Votes.NOT_VOTED,
       },
-    })
+    ]
   }
 };
