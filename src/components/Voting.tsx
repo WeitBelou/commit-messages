@@ -16,6 +16,14 @@ export interface VotingPropsCallbacks {
 export interface VotingProps extends VotingPropsValues, VotingPropsCallbacks {
 }
 
+/**
+ * Create new voting component.
+ * @param {Message} message
+ * @param {(id: MessageId) => void} onBug
+ * @param {(id: MessageId) => void} onNotBug
+ * @returns {any}
+ * @constructor
+ */
 const Voting: React.SFC<VotingProps> = ({message, onBug, onNotBug}) => {
   const safeMessage = isNullOrUndefined(message) ? {id: -1, text: ''} : message;
 

@@ -3,9 +3,21 @@ import { combineReducers } from 'redux';
 import { State, Message, MessageId, Votes, Messages } from './state';
 import { Action, VOTE_BUG, VOTE_NOT_BUG } from './actions';
 
+/**
+ * Returns next unprocessed message or 'undefined'
+ * @param {Message[]} messages
+ * @returns {Message}
+ */
 const getNextMessage = (messages: Message[]): Message | undefined =>
   messages.find((message: Message) => message.vote === Votes.NOT_VOTED);
 
+/**
+ * Returns new array of messages with one changed to voted
+ * @param {Message[]} messages
+ * @param {MessageId} id
+ * @param {Votes} vote
+ * @returns {Message[]}
+ */
 const voteFor = (messages: Message[], id: MessageId, vote: Votes): Message[] => {
   return messages.map((msg: Message) => (msg.id === id) ? {...msg, vote: vote} : msg);
 };
