@@ -30,12 +30,27 @@ const Voting: React.SFC<VotingProps> = ({message, onBug, onNotBug}) => {
   const onBugHandler = () => onBug(safeMessage.id);
   const onNotBugHandler = () => onNotBug(safeMessage.id);
 
+  const onKeyPressHandler = (e: KeyboardEvent) => {
+    switch (e.key) {
+      case 'B':
+      case 'b':
+        onBugHandler();
+        return;
+      case 'N':
+      case 'n':
+        onNotBugHandler();
+        return;
+      default:
+        return;
+    }
+  };
+
   return (
     <Container>
       <Segment.Group size="massive">
         <Segment>{safeMessage.text}</Segment>
 
-        <Button.Group fluid size="massive">
+        <Button.Group fluid size="massive" onKeyPress={onKeyPressHandler}>
           <Button positive icon="bug" content="Bug" onClick={onBugHandler}/>
 
           <Button.Or/>
