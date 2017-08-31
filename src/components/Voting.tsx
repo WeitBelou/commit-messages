@@ -46,7 +46,7 @@ const Voting: React.SFC<VotingProps> = ({message, onBug, onNotBug}) => {
   };
 
   return (
-    <Container>
+    <Container text>
       <Segment.Group size="massive">
         <Segment>{safeMessage.text}</Segment>
 
